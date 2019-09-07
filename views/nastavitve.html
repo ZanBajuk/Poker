@@ -1,0 +1,70 @@
+﻿
+% rebase('base.html')
+
+<div class="miza">
+    % for i in range(6):
+    <div class="igralci" id="igralec{{i}}">
+        <table style="height: 50px;">
+            % if igra.igralci[i]:
+            <tr>
+                <td style="font-size: 32px;">
+                    Igralec {{i}}
+					% if igra.racunalnik[i]:
+					💻
+					% end
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size: 22px;">
+                    Σ: {{int(igra.denar_igralcev[i])}}€
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size: 30px;">
+                    0€
+                </td>
+            </tr>
+            % else:
+            <tr>
+                <td style="font-size: 32px; text-decoration: line-through; color: gray;">
+                    Igralec {{i}}
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size: 22px; text-decoration: line-through; color: gray;">
+                    Σ: 0€
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size: 30px; text-decoration: line-through; color: gray;">
+                    FOLD
+                </td>
+            </tr>
+            % end
+        </table>
+		% if not igra.igralci[i]:
+        <div id="inputi">
+            <table style="margin-left:6px;">               
+                <tr>
+                    <td>
+                        <form action="/dodaj_igralca{{i}}/" method="post">
+                            <button type="submit" class="button">Dodaj igralca</button>
+                        </form>
+                    </td>
+					<td>
+                        <form action="/dodaj_racunalnik{{i}}/" method="post">
+                            <button type="submit" class="button">Dodaj računalnik</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        % end
+    </div>
+    %end
+	<div id="srednje_karte">
+        <form action="/zacni_igro/" method="post">
+            <button type="submit" class="button">Začni igro</button>
+        </form>
+    </div>
+</div>

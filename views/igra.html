@@ -1,0 +1,124 @@
+﻿
+% rebase('base.html')
+
+% if igra.koncni_zmagovalec != None:
+<div id="zmagovalec">
+    Zmagovalec je Igralec {{igra.koncni_zmagovalec}}
+    <form action="/nova_igra/" method="post">
+        <button type="submit" id="nova_igra_gumb">Nova igra</button>
+    </form>
+</div>
+% end
+
+<div class="miza">
+    % for i in range(6):
+    <div class="igralci" id="igralec{{i}}">
+        <table style="height: 50px;">
+            % if igra.igralci[i]:
+            <tr>
+                % if igra.konec_runde == True and igra.zmagovalec_runde == i:
+                <td style="font-size: 32px; color: gold">
+                    Igralec {{i}} ✪
+                </td>
+                % else:
+                <td style="font-size: 32px;">
+                    Igralec {{i}}
+                    % if igra.racunalnik[i]:
+                    💻
+                    % end
+                </td>
+                % end
+            </tr>
+            <tr>
+                <td style="font-size: 22px;">
+                    Σ: {{int(igra.denar_igralcev[i])}}€
+                </td>
+            </tr>
+            <tr>
+                % if igra.aktivni_igralci[i]:
+                <td style="font-size: 30px;">
+                    {{int(igra.vlozen_denar[i])}}€
+                </td>
+                % else:
+                <td style="font-size: 30px;">
+                    FOLD
+                </td>
+                % end
+            </tr>
+            % else:
+            <tr>
+                <td style="font-size: 32px; text-decoration: line-through; color: gray;">
+                    Igralec {{i}}
+                    % if igra.racunalnik[i]:
+                    💻
+                    % end
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size: 22px; text-decoration: line-through; color: gray;">
+                    Σ: 0€
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size: 30px; text-decoration: line-through; color: gray;">
+                    FOLD
+                </td>
+            </tr>
+            % end
+        </table>
+        % if i == igra.igralec_na_potezi and igra.konec_runde == False:
+        <div id="inputi">
+            <table style="margin-left:6px;">
+                % if igra.vmesni_del == False:
+                <tr>
+                    <td>
+                        <form action="/dvig/" method="post">
+                            <button type="submit" class="button">Dvig</button>
+                            <input type="text" name="dvig" maxlength="4" size="1" value="0"> &nbsp; &nbsp; &nbsp;
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/klic/" method="post">
+                            <button type="submit" class="button">Klic</button> &nbsp;
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/predaj/" method="post">
+                            <button type="submit" class="button">Predaj</button>
+                        </form>
+                    </td>
+                </tr>
+                % else:
+                <tr>
+                    <td>
+                        <form action="/vmesni_del/" method="post">
+                            <button type="submit" class="button">Naslednji igralec</button>
+                        </form>
+                    </td>
+                </tr>
+                % end
+            </table>
+        </div>
+        % end
+        <div class="karte">
+            % if igra.karte_igralcev[i] != 0:
+                % if (igra.konec_runde == True) or (i == igra.igralec_na_potezi and igra.vmesni_del == False):
+            <img src="img/{{igra.karte_igralcev[i][0].barva}}{{igra.karte_igralcev[i][0].vrednost}}.png" alt="karta 1" width="60" height="90"> <img src="img/{{igra.karte_igralcev[i][1].barva}}{{igra.karte_igralcev[i][1].vrednost}}.png" alt="karta 2" width="60" height="90">
+                % else:
+            <img src="img/zadnja_stran.png" alt="karta 1" width="60" height="90"> <img src="img/zadnja_stran.png" alt="karta 2" width="60" height="90">
+                % end
+            % end
+        </div>
+    </div>
+    %end
+    <div id="srednje_karte">
+        % if igra.konec_runde == True:
+        <form action="/igra/" method="post">
+            <button type="submit" class="button">Začni igro</button>
+        </form>
+        % end
+        % for j in igra.karte_na_mizi:
+        <img src="img/{{j.barva}}{{j.vrednost}}.png" alt="karta na mizi" width="72" height="108">
+        % end
+    </div>
+</div>

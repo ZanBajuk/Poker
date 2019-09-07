@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .miza{
+            background-image: url("img/miza.png");
+            background-size: 1290px 624px;
+            width: 1290px;
+            height: 624px;
+        }
+ 
+        .igralci{
+            background-color: darkslategrey;
+            width: 232px;
+            height: 136px;
+            color: white;
+            text-shadow: 2px 2px black;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            border: 4px solid black;
+            border-radius: 5px;
+            padding: 4px;
+            position: relative;
+        }
+
+        #igralec0{
+            top: 0;
+            left: 315px
+        }
+
+        #igralec1{
+            top: -150px;
+            left: 730px
+        }
+
+        #igralec2{
+            top: -86px;
+            left: 1020px;
+        }
+
+        #igralec3{
+            top: 10px;
+            left: 730px;
+        }
+
+        #igralec4{
+            top: -140px;
+            left: 315px;
+        }
+
+        #igralec5{
+            top: -530px
+        }
+
+        .karte{
+            position: absolute;
+            right: 8px;
+            top: 46px;
+        }
+
+        td {
+            height: 30px;
+        }
+
+        #srednje_karte{
+            position: absolute;
+            top: 394px;
+            left: 462px;
+        }
+
+        #inputi{
+            position: absolute;
+            top: 140px;
+            width: 242px;
+            height: 34px;
+            background-color: dimgray;
+            border: 3px solid black;
+            border-radius: 10px;
+        }
+
+        .button{
+            background-color: orange;
+            border: none;
+            color: black;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        #zmagovalec{
+            position: fixed;
+            top: 250px;
+            left: 50px;
+            background-color: goldenrod;
+            width: 1125px;
+            height: 300px;
+            margin: 10px;
+            padding: 20px;
+            color: white;
+            text-shadow: 2px 2px black;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 100px;
+            border: 4px solid black;
+            border-radius: 5px;
+            z-index: 10;
+        }
+
+        #nova_igra_gumb{
+            position: absolute;
+            top: 56%;
+            left: 42%;
+            background-color: floralwhite;
+            border: none;
+            color: black;
+            padding: 12px 26px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 36px;
+            text-shadow: 2px 2px gray;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 22px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Poker</h1>
+
+    <blockquote>
+        "Zabava za vso družino!" - Poker
+        <small>2019</small>
+    </blockquote>
+
+    <div id="content">
+        {{!base}}
+    </div>
+
+</body>
+
+</html>

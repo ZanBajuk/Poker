@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\views"
   ],
-  "SelectedNode": "\\model.py",
+  "SelectedNode": "\\views\\nastavitve.html",
   "PreviewInSolutionExplorer": false
 }
